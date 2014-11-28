@@ -1,0 +1,49 @@
+body {
+	font-family: Arial, Verdana, ssans-serif;
+	background: #660000;
+	color: white;
+	
+}
+canvas#myCanvas { background: white; }
+#headerwrap {
+	background: url("cinema.jpg") no-repeat center top;
+	margin-top: -70px;
+	padding-top: 250px;
+	text-align: center;
+	background-attachment: relative;
+	background-position: center center;
+	min-height: 250px;
+	max-height: 500px;
+	width: 100%;
+	-webkit-background-size: 100%;
+	-moz-background-size: 100%;
+	-o-background-size: 100%;
+	background-size: 100%;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+#headerwrap h1 {
+	color: #4a4a4a;
+	letter-spacing: 1px;
+	font-size: 55px;
+	font-weight: bold;
+	padding-bottom: 300;
+	position: relative;
+	top: -180px;
+}
+
+#map-canvas {
+	height: 340px;
+	width: 400px;
+	margin: 0px 25px 0 0;
+	padding: 0px;
+	float: left;
+	clear: left;
+}
+
+
+.movieposter { float: left; margin-right: 10px; }
+.movielist li { float: left; width: 30%;  list-style-type:  none;}
