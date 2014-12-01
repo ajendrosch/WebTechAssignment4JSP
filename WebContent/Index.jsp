@@ -85,7 +85,7 @@
 				</div>
 			</div>
 		</section>
-		<form action = "showAndSaveReservation.jsp" method = "post" id="resdata"> 
+		<form action = "showAndSaveReservation.jsp" method = "post" id="resdata" onsubmit ="return checkSeats();"> 
 		<section id="slide-2" style="clear: left; padding-top: 20px;"
 			class="homeSlide">
 			<div class="bcg" data-center="background-position: 50% 0px;"
@@ -204,7 +204,7 @@
 								</tr>
 								<tr>
 									<td></td>
-								   <input type="hidden" name="seats" value ="TEST" id="hiddenseats">  
+								   <input type="hidden" name="seats" id="hiddenseats" value = "">  
 									<td><input type="submit" name="submit" id="submit"
 										value="Make a reservation" /> <span id="confirmation"></span></td>
 								</tr>
@@ -418,9 +418,10 @@ function reserveSeats() {
 	return false;
 }
 
-
-
-
+function checkSeats(){
+	alert("You did not select any seats");
+	return (!(document.getElementById("hiddenseats").value === ("")));
+}
 
 </script>
 </html>
