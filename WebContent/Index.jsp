@@ -19,11 +19,9 @@
 </head>
 <body>
 
-<%-- Making database connection: --%>
+<%-- Making database connection and receiving currently reserved seats for all movies: --%>
 <%
 	Connection c = MySQL.connect();
-	// out.print(c);
-	//MySQL.close(c);
 	Statement stmnt = c.createStatement();
 	String sqlStr = "SELECT seats FROM Cinema.Movies WHERE movieID =";
 	sqlStr += '"' + "coherence" + '"' ;
@@ -48,7 +46,7 @@
 	
 %>
 
-<%-- END OF CONNECTION ESTABLISHMENT --%>
+<%-- Actual page --%>
 
 	<header id="headerwrap">
 		<div class="container">
@@ -187,9 +185,6 @@
 						As a last step to finish your ticket reservation, we need your
 						contact data:
 
-
-					<!--	<-- <form action="#" autocomplete="on" id="resdata"> -->
-
 							<table style="border: 0;" cellpadding="2" cellspacing="0"|>
 								<tr>
 									<td><label for="fname">First name:</label></td>
@@ -225,7 +220,7 @@
 </body>
 </body>
 
-<!--  All JavaScript from  seat.js-->
+<!--  All JavaScript that we previously had in seat.js plus additional code for reservation-->
 <script type="text/javascript">
 
 
@@ -242,8 +237,7 @@ window.onload = function(){
 	
 	c.onclick = mouse;
 	document.getElementById("clickMe").onclick = displaySeats;
-	//document.getElementById("resdata").onsubmit = reserveSeats;
-	// document.getElementById("clearCanvas").onclick = clearCanvas;
+	
 }
 
 function getMousePos(c, evt) {
@@ -359,8 +353,6 @@ function displaySeats(){
 	initial = true;
 	var randomnumber = [];
 	var randomnumber2 = [];
-	
-
 	
 	//create random amount of taken seats
 	var repeat = Math.floor(Math.random()*50);

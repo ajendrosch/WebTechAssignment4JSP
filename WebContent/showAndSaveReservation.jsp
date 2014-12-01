@@ -21,7 +21,7 @@
 	<%-- END OF CONNECTION ESTABLISHMENT --%>
 
 	<%
-		// Inserting data except reserved seats into database
+		// Inserting data except reserved seats into database and receiving LAST_INSERT_ID which is then the reservationID
 		Statement stmt = c.createStatement();
 		String sqlStr = "INSERT INTO  `Cinema`.`Reservations` (`firstName`, `lastName`, `eMail`, `cellNumber`, `movieID`, `date`) VALUES (";
 		sqlStr += "'" + request.getParameter("fname") + "'" + ",";
@@ -32,6 +32,11 @@
 		sqlStr += "'" + request.getParameter("date") + "'";
 		sqlStr += ")";
 		stmt.executeUpdate(sqlStr);
+		sqlStr= "SELECT LAST_INSERT_ID();";
+		ResultSet resSetWithLastID = stmt.executeQuery(sqlStr);
+		resSetWithLastID.next();
+		int reservationID = resSetWithLastID.getInt(1);
+		
 
 		// Insertion of reserved seats into database
 		// this works by first requesting the current seat data from the db, overwriting with "1" for the seats that are stored in the request
@@ -65,8 +70,11 @@
 		String email = request.getParameter("email");
 		String telephone = request.getParameter("telephone");
 		String movie = request.getParameter("movie");
-		//String telephone = request.getParameter("telephone");
+		
+	
 	%>
+	
+	<!--  Actual displayed HTML Page: -->
 
 	<H1>
 		Thank you
@@ -78,7 +86,7 @@
 		You reserved:
 		<%=numSeats%>
 		x Tickets for
-		<%=movie%>
+		<%=movie%>. Your reservation ID is <%=reservationID%>.
 	</div>
 
 </body>
